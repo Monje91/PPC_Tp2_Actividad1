@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import kotlinx.android.synthetic.main.activity2.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,11 +12,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var btncambio = findViewById(R.id.botonCambiar) as Button
 
-        btncambio.setOnClickListener {
-            val intent = (textoacambiar, Activity2::class.java)
-            startActivity(intent);
+        botonCambiar.setOnClickListener {
+            val intent:Intent = Intent(this, Activity_2::class.java)
+            startActivity(intent)
         }
+
+       val recibetexto: Intent=intent
+       var muestratexto = recibetexto.getStringExtra("textocambio")
+       textomostrar.text = "$muestratexto"
     }
 }
